@@ -1,0 +1,14 @@
+name: End-to-end tests # Dá um nome à automação. Esse nome é só para identificação e organização no painel de ações do GitHub.
+on: push # Pede que a automação seja executada sempre que você enviar algo para o seu repositório.
+jobs:
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Download
+        uses: actions/checkout@v4 # Essa ação baixa o código do repositório GitHub para a máquina virtual
+        
+      - name: Instalar node_modules
+        run: npm install
+
+      - name: Execucao de Testes
+        uses: cypress-io/github-action@v6
