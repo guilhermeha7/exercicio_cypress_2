@@ -4,11 +4,18 @@ jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
-      - name: Download
+      - name: Baixar pepositório
         uses: actions/checkout@v4 # Essa ação baixa o código do repositório GitHub para a máquina virtual
-        
+
       - name: Instalar node_modules
         run: npm install
 
-      - name: Execucao de Testes
+      - name: Execucao de testes
         uses: cypress-io/github-action@v6
+
+      - name: Salvar screenshots de testes que falharem
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
