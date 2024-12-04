@@ -4,7 +4,7 @@ jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
-      - name: Baixar pepositório
+      - name: Baixar repositório
         uses: actions/checkout@v4 # Essa ação baixa o código do repositório GitHub para a máquina virtual
 
       - name: Instalar node_modules
